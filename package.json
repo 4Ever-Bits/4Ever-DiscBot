@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc -p tsconfig.json -w; node -r dotenv/config src/index.js;",
+    "start": "node -r dotenv/config src/index.js",
+    "tsc": "tsc",
+    "postinstall": "npm run tsc",
     "watch": "tsc -p tsconfig.json -w",
     "test": "mocha -r ts-node/register \"tests/**/*.spec.ts\""
   },
@@ -38,7 +40,6 @@
     "prettier": "^2.2.1",
     "ts-mockito": "^2.6.1",
     "ts-node": "^9.1.1",
-    "tsc": "^1.20150623.0",
     "typescript": "^4.2.3"
   },
   "dependencies": {
