@@ -2,20 +2,14 @@ import { Message } from "discord.js";
 import { inject, injectable } from "inversify";
 import { GitFinder } from "../commands/GitHub/git-finder";
 import { TYPES } from "../config/types";
-import { PingFinder } from "./ping-finder";
 
 @injectable()
 export class MessageResponder {
-  private pingFinder: PingFinder;
   private gitFinder: GitFinder;
 
   private prefix = "!";
 
-  constructor(
-    @inject(TYPES.PingFinder) pingFinder: PingFinder,
-    @inject(TYPES.GitFinder) gitFinder: GitFinder
-  ) {
-    this.pingFinder = pingFinder;
+  constructor(@inject(TYPES.GitFinder) gitFinder: GitFinder) {
     this.gitFinder = gitFinder;
   }
 

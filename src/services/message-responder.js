@@ -20,17 +20,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageResponder = void 0;
 const inversify_1 = require("inversify");
 const git_finder_1 = require("../commands/GitHub/git-finder");
 const types_1 = require("../config/types");
-const ping_finder_1 = require("./ping-finder");
 let MessageResponder = class MessageResponder {
-    constructor(pingFinder, gitFinder) {
+    constructor(gitFinder) {
         this.prefix = "!";
-        this.pingFinder = pingFinder;
         this.gitFinder = gitFinder;
     }
     handle(message) {
@@ -48,9 +45,8 @@ let MessageResponder = class MessageResponder {
 };
 MessageResponder = __decorate([
     inversify_1.injectable(),
-    __param(0, inversify_1.inject(types_1.TYPES.PingFinder)),
-    __param(1, inversify_1.inject(types_1.TYPES.GitFinder)),
-    __metadata("design:paramtypes", [typeof (_a = typeof ping_finder_1.PingFinder !== "undefined" && ping_finder_1.PingFinder) === "function" ? _a : Object, git_finder_1.GitFinder])
+    __param(0, inversify_1.inject(types_1.TYPES.GitFinder)),
+    __metadata("design:paramtypes", [git_finder_1.GitFinder])
 ], MessageResponder);
 exports.MessageResponder = MessageResponder;
 //# sourceMappingURL=message-responder.js.map
